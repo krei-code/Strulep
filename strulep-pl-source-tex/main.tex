@@ -1,0 +1,171 @@
+	
+\documentclass[10pt]{article}
+\usepackage{geometry}
+\geometry{a4paper, landscape}
+\geometry{left=0.5cm,right=2cm,top=1cm,bottom=1cm}
+% The paracol package lets you typeset columns of text in parallel
+\usepackage{paracol}
+\usepackage{booktabs}
+%polish support
+\usepackage[T1]{fontenc}
+%load colors package
+%colors list at https://www.overleaf.com/learn/latex/Using_colours_in_LaTeX
+\usepackage[dvipsnames]{xcolor}
+
+%define row text colors
+
+\definecolor{rowcolor}{HTML}{3f3f3f}
+\definecolor{headcolor}{HTML}{262dc1}
+
+
+% If using xelatex or lualatex:
+%\setmainfont{Roboto Slab}
+%\setsansfont{Lato}
+
+% If using pdflatex:
+\usepackage[rm]{roboto}
+\usepackage[defaultsans]{lato}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage{array}
+\newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
+\newcolumntype{C}[1]{>{\PreserveBackslash\centering}p{#1}}
+\newcolumntype{R}[1]{>{\PreserveBackslash\raggedleft}p{#1}}
+\newcolumntype{L}[1]{>{\PreserveBackslash\raggedright}p{#1}}
+
+\usepackage{graphicx}
+\graphicspath{ {./img/} }
+
+%Setup column widths in tables
+\newlength{\firstcolumnwidth}
+\newlength{\secondcolumnwidth}
+\setlength{\firstcolumnwidth}{0.7cm}
+\setlength{\secondcolumnwidth}{5cm}
+
+%Setup table rule widths
+\newlength{\topandbotrulewidth}
+\newlength{\midrulewidth}
+\setlength{\topandbotrulewidth}{1.2pt}
+\setlength{\midrulewidth}{0.3pt}
+
+\setlength{\columnsep}{0.5cm}
+
+
+
+%commands for tables headers and rows
+\newcommand{\tableheader}[1]
+{	\multicolumn{2}{l}{\textcolor{headcolor}{\bfseries{#1}}}\\
+	\toprule[\topandbotrulewidth]
+	\emph{skrót} & \emph{opis}\\
+	\toprule[\topandbotrulewidth]
+}
+%insert row
+\newcommand{\addNewTableRow}[2]
+{	{\textcolor{rowcolor} {\footnotesize{#1}}} & {\textcolor{rowcolor} {\footnotesize{#2}}}\\
+	\midrule[\midrulewidth]
+}
+
+
+
+
+
+
+\begin{document}
+	\columnratio{0.08}
+	
+	% Start a 2-column paracol. Both the left and right columns will automatically
+	% break across pages if things get too long.
+	
+	\begin{paracol}{2}
+		\includegraphics[scale=.15]{krei_main_logo_vector.pdf}
+		\switchcolumn
+		{\large Piotr Zieliński}\\
+	\end{paracol}
+	\bigskip
+	%% Set the left/right column width ratio to 6:4.
+	\columnratio{0.25}
+	% Start a 2-column paracol. Both the left and right columns will automatically
+	% break across pages if things get too long.
+	
+	\begin{paracol}{4}
+		\renewcommand{\arraystretch}{0.8}% Tighter
+		%first column start here
+		\begin{tabular}{L{\firstcolumnwidth} L{\secondcolumnwidth}}
+			\tableheader{FUNDAMENTY}
+			\addNewTableRow{STF}{stopa fundamentowa}
+			\addNewTableRow{LWA}{ława fundamentowa}
+			\addNewTableRow{PFU}{płyta fundamentowa}
+			\addNewTableRow{PNE}{przegłębienie w płycie}
+			\addNewTableRow{PGR}{pogrubienie w płycie}
+			\addNewTableRow{OPR}{mur oporowy}
+			\addNewTableRow{OCF}{oczep - stopa na palach}
+			\addNewTableRow{RFU}{ruszt fundamentowy}
+			\addNewTableRow{POD}{podwalina}
+			\addNewTableRow{STD}{studnia fundamentowa}
+			\addNewTableRow{KSN}{keson}
+			\addNewTableRow{SKR}{skrzynia fundamentowa}
+			\addNewTableRow{OCL}{oczep - ława na palach}
+		\end{tabular}
+		\bigskip
+		
+		\begin{tabular}{L{\firstcolumnwidth} L{\secondcolumnwidth}}
+			\tableheader{OBUDOWY WYKOPÓW}
+			\addNewTableRow{SSZ}{ściany szczelinowe}
+			\addNewTableRow{BER}{obudowa berlińska}
+			\addNewTableRow{PDA}{palisada}
+			\addNewTableRow{LAR}{Larsen / ścianka szczelna}
+			\addNewTableRow{RZP}{rozpora}
+			\addNewTableRow{KTW}{kotwa gruntowa}
+			\addNewTableRow{OCP}{oczep obudowy wykopu}
+			\addNewTableRow{MPR}{murek prowadzący}
+%			\addNewTableRow{PNA}{podwalina}
+%			\addNewTableRow{STD}{studnia fundamentowa}
+%			\addNewTableRow{KSN}{keson}
+%			\addNewTableRow{SKR}{skrzynia fundamentowa}
+		\end{tabular}
+		\bigskip
+		
+		%Switch to second column
+		\switchcolumn
+		
+		\begin{tabular}{L{\firstcolumnwidth} L{\secondcolumnwidth}}
+			\tableheader{BUDYNEK - \emph{elementy nośne pionowe}}
+			\addNewTableRow{SUP}{słup}
+			\addNewTableRow{TRZ}{trzpień}
+			\addNewTableRow{FIL}{filarek}
+			\addNewTableRow{SCN}{ściana nośna murowana}
+			\addNewTableRow{SCZ}{ściana nośna żelbetowa}
+			\addNewTableRow{SCW}{ściana nienośna - wypełniająca}
+			\addNewTableRow{TAR}{tarcza żelbetowa}
+		\end{tabular}
+		\bigskip
+
+		\begin{tabular}{L{\firstcolumnwidth} L{\secondcolumnwidth}}
+			\tableheader{BUDYNEK - \emph{elementy nośne poziome}}
+			\addNewTableRow{NPR}{nadproże prefabrykowane}
+			\addNewTableRow{BLK}{belka monolityczna}
+			\addNewTableRow{POD}{podciąg żelbetowy}
+			\addNewTableRow{NAD}{nadciąg / belka nad stopem}
+			\addNewTableRow{ZBR}{żebro stropu}
+			\addNewTableRow{STR}{strop żelbetowy}
+			\addNewTableRow{SFI}{strop typu filigran}
+			\addNewTableRow{PFI}{płyta filigran}
+			\addNewTableRow{TER}{strop typu terriva}
+			\addNewTableRow{SKN}{strop z płyt kanałowych}
+			\addNewTableRow{BKN}{balkon}
+			\addNewTableRow{WSP}{wspornik}
+			\addNewTableRow{WNC}{wieniec monolityczny}
+		\end{tabular}
+		\bigskip
+
+		%Switch to third column
+		\switchcolumn
+
+		%Switch to fourth column
+		\switchcolumn
+
+	\end{paracol}
+
+
+\end{document}
